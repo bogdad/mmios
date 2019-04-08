@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+- (void)setupConstraints;
+
 @end
 
 @implementation ViewController
@@ -17,6 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.mytitle = [[UILabel alloc] init];
+    self.mytitle.text = @"Mental Math";
+    self.mytitle.translatesAutoresizingMaskIntoConstraints = false;
+             
+    [self.view addSubview:self.mytitle];
+    
+    [self setupConstraints];
+}
+
+- (void)setupConstraints {
+    NSLayoutConstraint *hCenter = [_mytitle.centerXAnchor constraintEqualToAnchor: [self.view centerXAnchor]];
+    NSLayoutConstraint *vTop = [_mytitle.centerYAnchor constraintEqualToAnchor: [self.view centerYAnchor]];
+    [NSLayoutConstraint activateConstraints:@[hCenter, vTop]];
 }
 
 
